@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "Fabric"
-  spec.version      = "1.2.3"
+  spec.version      = "1.3.0"
   spec.summary      = "Fabric by Twitter, Inc."
   spec.homepage     = "https://fabric.io"
   spec.author       = "Twitter"
@@ -12,12 +12,12 @@ Pod::Spec.new do |spec|
 
   spec.subspec "Core" do |core|
     core.vendored_frameworks = "Fabric.framework"
-    core.public_header_files = "Fabric.framework/Versions/A/Headers/*.h"
+    core.public_header_files = "Fabric.framework/Headers/*.h"
   end
 
   spec.subspec "Crashlytics" do |crashlytics|
     crashlytics.vendored_frameworks = "Crashlytics.framework"
-    crashlytics.public_header_files = "Crashlytics.framework/Versions/A/Headers/*.h"
+    crashlytics.public_header_files = "Crashlytics.framework/Headers/*.h"
   end
 
   spec.subspec "MoPub" do |mopub|
@@ -26,7 +26,10 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec "Twitter" do |twitter|
-    twitter.vendored_frameworks = "TwitterKit.framework"
-    twitter.resource_bundles = { "TwitterKitResources" => "TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle/*" }
+    twitter.vendored_frameworks = "TwitterCore.framework", "TwitterKit.framework", "DigitsKit.framework"
+    twitter.resource_bundles = {
+      "TwitterKitResources" => "TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle/*",
+      "DigitsKitResources" => "DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle/*"
+    }
   end
 end
