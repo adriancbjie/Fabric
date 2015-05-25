@@ -26,6 +26,7 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec "Twitter" do |twitter|
+    twitter.public_header_files = "TwitterCore.framework/Headers/*.h", "TwitterKit.framework/Headers/*.h", "DigitsKit.framework/Headers/*.h"
     twitter.vendored_frameworks = "TwitterCore.framework", "TwitterKit.framework", "DigitsKit.framework"
     twitter.resource_bundles = {
       "TwitterKitResources" => "TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle/*",
